@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "biofile_kit"
+name = "biofile-kit"
 version = "0.0.0"
 description = "Bioinformatics File Operations Toolkit."
 authors = ["Wenlin Xu <wenlinxu.njfu@outlook.com>"]

@@ -6,7 +6,7 @@ focus on your scientific discoveries!**
 
 # Install
 ```
-pip install biofile_kit
+pip install biofile-kit
 ```
 
 # Usage example
