@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "biofile-kit"
-version = "0.0.0"
+version = "0.0.1"
 description = "Bioinformatics File Operations Toolkit."
 authors = ["Wenlin Xu <wenlinxu.njfu@outlook.com>"]
 readme = "README.md"
@@ -8,7 +8,7 @@ packages = [{include = "biofile_kit"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pybioinformatic = "1.2.2"
+pybioinformatic = "1.2.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
