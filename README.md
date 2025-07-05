@@ -1,8 +1,6 @@
 # Introduction
-**BioFileKit: Designed to provide bioinformatics researchers and developers with a powerful, user-friendly and 
-extensible Python toolkit, it focuses on simplifying the reading, writing, conversion, parsing and basic operations of 
-various biological data file formats. Say goodbye to reinventing the wheel and the cumbersome format analysis, and 
-focus on your scientific discoveries!**
+**BioFileKit: A Python command-line toolkit dedicated to simplifying the reading, writing, conversion, 
+parsing and basic operations of various biological data file formats.**
 
 # Install
 ```
