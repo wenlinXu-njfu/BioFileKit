@@ -15,11 +15,13 @@ from biofile_kit.fasta_utils import (
     get_longest_seq_for_gene,
     get_reverse_complementary_seq,
     get_seq_len,
+    hardmasked_to_softmasked,
     id_index_seq,
     motif_finder,
     ORF_finder,
     seq_rename,
     SSR_finder,
+    telomere_finder,
     __version__
 )
 from pybioinformatic import Displayer
@@ -42,11 +44,13 @@ fasta_tools.add_command(generate_random_nucl, 'random_nucl')
 fasta_tools.add_command(get_longest_seq_for_gene, 'get_longest_seq_for_gene')
 fasta_tools.add_command(get_reverse_complementary_seq, 'get_reverse_complementary_seq')
 fasta_tools.add_command(get_seq_len, 'get_seq_len')
+fasta_tools.add_command(hardmasked_to_softmasked, 'hardmasked_to_softmasked')
 fasta_tools.add_command(id_index_seq, 'id_index_seq')
 fasta_tools.add_command(motif_finder, 'motif_finder')
 fasta_tools.add_command(ORF_finder, 'ORF_finder')
 fasta_tools.add_command(seq_rename, 'seq_rename')
 fasta_tools.add_command(SSR_finder, 'SSR_finder')
+fasta_tools.add_command(telomere_finder, 'telomere_finder')
 
 
 if __name__ == '__main__':

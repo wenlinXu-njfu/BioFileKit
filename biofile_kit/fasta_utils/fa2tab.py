@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 File: fa2tab.py
-Description: 
+Description: Convert FASTA to tabular format.
 CreateDate: 2023/10/14
 Author: xuwenlin
 E-mail: wenlinxu.njfu@outlook.com
@@ -22,9 +22,7 @@ def main(fasta_file: Union[str, TextIOWrapper],
 
 
 @click.command(context_settings=dict(help_option_names=['-h', '--help']))
-@click.option('-i', '--fasta_file', 'fasta_file',
-              metavar='<fasta file|stdin>', type=click.File('r'), required=True,
-              help='Input FASTA file.')
+@click.argument('fasta_file', metavar='<fasta file|stdin>', type=click.File('r'), required=True)
 @click.option('-p', '--parse_seqids', 'parse_seqids',
               is_flag=True, flag_value=True,
               help='Parse sequence id.')
@@ -34,7 +32,7 @@ def main(fasta_file: Union[str, TextIOWrapper],
 @click.option('-V', '--version', 'version', help='Show author and version information.',
               is_flag=True, is_eager=True, expose_value=False, callback=displayer.version_info)
 def run(fasta_file, parse_seqids, output_file):
-    """Description."""
+    """Convert FASTA to tabular format."""
     main(fasta_file, parse_seqids, output_file)
 
 

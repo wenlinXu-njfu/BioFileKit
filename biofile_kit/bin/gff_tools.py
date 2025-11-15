@@ -7,8 +7,17 @@ Author: xuwenlin
 E-mail: wenlinxu.njfu@outlook.com
 """
 import click
-from biofile_kit.gff_utils import get_feature_density, gff2bed, gff2gtf, gff_extract_seq, gff_sort, rename, __version__
 from pybioinformatic import Displayer
+from biofile_kit.gff_utils import (
+    get_feature_density,
+    gff2bed,
+    gff2gtf,
+    gff_extract_seq,
+    gff_sort,
+    rename,
+    stats,
+    __version__
+)
 
 displayer = Displayer(__file__.split('/')[-1], version=__version__)
 
@@ -27,6 +36,7 @@ gff_tools.add_command(gff2gtf, 'to_gtf')
 gff_tools.add_command(gff_extract_seq, 'extract_seq')
 gff_tools.add_command(gff_sort, 'sort')
 gff_tools.add_command(rename, 'rename')
+gff_tools.add_command(stats, 'stats')
 
 
 if __name__ == '__main__':
