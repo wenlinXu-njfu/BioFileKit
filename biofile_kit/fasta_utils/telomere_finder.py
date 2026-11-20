@@ -7,14 +7,13 @@ Author: xuwenlin
 E-mail: wenlinxu.njfu@outlook.com
 """
 from io import StringIO, TextIOWrapper
-from os.path import exists
 from shutil import which
 from pandas import read_table
 from natsort import natsort_key
 import click
 from pybioinformatic import Fasta, TaskManager, dataframe_to_str, Displayer
 
-displayer = Displayer(__file__.split('/')[-1], version='0.1.0')
+displayer = Displayer(__file__.split('/')[-1], version='0.1.1')
 
 
 def main(
@@ -31,13 +30,13 @@ def main(
     tkm = TaskManager(num_processing=1)
 
     cmd = f'{samtools} faidx {fasta_file}'
-    tkm.echo_and_exec_cmd(cmd=cmd, show_cmd=True, pipe=False)
+    tkm.echo_and_exec_cmd(cmd=cmd, show_cmd=False, pipe=False)
 
-    bed_a = r'''awk -F'\t' '{print $1"\t0\t%s\n"$1"\t"$2-%s"\t"$2}' %s''' % (
-    telomere_range, telomere_range, f'{fasta_file}.fai')
+    bed_a = (r'''awk -F'\t' '{print $1"\t0\t%s\n"$1"\t"$2-%s"\t"$2}' %s''' %
+             (telomere_range, telomere_range, f'{fasta_file}.fai'))
     bed_b = f'{seqkit} locate -ip {telomere_motif} {fasta_file} --bed'
     cmd = f'{bedtools} intersect -a <({bed_a}) -b <({bed_b}) -c'
-    stdout, stderr = tkm.echo_and_exec_cmd(cmd, show_cmd=True, pipe=True)
+    stdout, stderr = tkm.echo_and_exec_cmd(cmd, show_cmd=False, pipe=True)
     if stderr:
         click.echo(stderr, err=True)
     count_df = read_table(StringIO(stdout), header=None, names=['Chromosome', 'Start', 'End', 'MotifCount'])

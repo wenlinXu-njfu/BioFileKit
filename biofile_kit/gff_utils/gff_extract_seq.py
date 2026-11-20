@@ -53,7 +53,8 @@ def main(gff_file: Union[str, TextIOWrapper],
               help='Provides an ID file (one id per line) that extracts sequences from the GFF file that '
                    '\033[1mmatch\033[0m the IDs in the ID file.')
 @click.option('-a', '--other-infor', 'other_infor', metavar='<str>',
-              help='Information to retain in column 9 of the gff file, multiple messages are separated by commas. (eg. Parent,pacid)')
+              help='Information to retain in column 9 of the gff file, multiple messages are separated by commas (eg. Parent,pacid). '
+                   'If this option is specified, include the fields specified by the "-I, --id-field" option in the value of this option as well.')
 @click.option('-p', '--num-processing', 'num_processing',
               metavar='<int>', type=int, default=4, show_default=True,
               help='Number of processing.')

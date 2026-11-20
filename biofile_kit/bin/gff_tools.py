@@ -9,6 +9,8 @@ E-mail: wenlinxu.njfu@outlook.com
 import click
 from pybioinformatic import Displayer
 from biofile_kit.gff_utils import (
+    add_attribute,
+    add_gene_flank_region,
     get_feature_density,
     gff2bed,
     gff2gtf,
@@ -16,6 +18,7 @@ from biofile_kit.gff_utils import (
     gff_sort,
     rename,
     stats,
+    summary,
     __version__
 )
 
@@ -30,6 +33,8 @@ def gff_tools():
     pass
 
 
+gff_tools.add_command(add_attribute, 'add_attr')
+gff_tools.add_command(add_gene_flank_region, 'add_gene_flank_region')
 gff_tools.add_command(get_feature_density, 'get_feature_density')
 gff_tools.add_command(gff2bed, 'to_bed')
 gff_tools.add_command(gff2gtf, 'to_gtf')
@@ -37,6 +42,7 @@ gff_tools.add_command(gff_extract_seq, 'extract_seq')
 gff_tools.add_command(gff_sort, 'sort')
 gff_tools.add_command(rename, 'rename')
 gff_tools.add_command(stats, 'stats')
+gff_tools.add_command(summary, 'summary')
 
 
 if __name__ == '__main__':

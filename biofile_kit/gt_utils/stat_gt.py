@@ -24,26 +24,31 @@ def main(gt_file: Union[str, TextIOWrapper],
     # stat MHM
     with GenoType(gt_file) as gt:
         stat_df = gt.parallel_stat_MHM(num_processing)
+
     # plot figure
     style.use('ggplot')
     set_custom_font('Arial')
-    rcParams['font.size'] = 8
-    fig = figure(figsize=(12, 5), dpi=300)
+    rcParams['font.size'] = 12
+    rcParams['pdf.fonttype'] = 42
+    fig = figure(figsize=(12, 4), dpi=300)
     ax1 = fig.add_subplot(131)
     ax2 = fig.add_subplot(132)
     ax3 = fig.add_subplot(133)
     histplot(stat_df, x='MissRate(%)', ax=ax1, bins=20)
     histplot(stat_df, x='HetRate(%)', ax=ax2, bins=20)
     histplot(stat_df, x='MAF', ax=ax3, bins=20)
-    ax1.set_xticks(range(0, 110, 10), range(0, 110, 10), rotation=45)
-    ax2.set_xticks(range(0, 110, 10), range(0, 110, 10), rotation=45)
-    subplots_adjust(wspace=0.3)
+    ax1.set_xticks(range(0, 110, 10), range(0, 110, 10), rotation=60)
+    ax2.set_xticks(range(0, 110, 10), range(0, 110, 10), rotation=60)
+    subplots_adjust(wspace=0.5)
+
     # output file
     stat_df['MissRate(%)'] = stat_df.loc[:, ['MissRate(%)']].applymap(lambda value: '%.2f' % value)
     stat_df['HetRate(%)'] = stat_df.loc[:, ['HetRate(%)']].applymap(lambda value: '%.2f' % value)
     stat_df['MAF'] = stat_df.loc[:, ['MAF']].applymap(lambda value: '%.3f' % value)
     stat_df.to_csv(f'{output_path}/site_stat.xls', sep='\t', index=False)
-    savefig(f'{output_path}/distribution.png', bbox_inches='tight')
+
+    savefig(f'{output_path}/MissRate_HetRate_MAF_distribution.png', bbox_inches='tight')
+    savefig(f'{output_path}/MissRate_HetRate_MAF_distribution.pdf', bbox_inches='tight')
 
 
 @click.command(context_settings=dict(help_option_names=['-h', '--help']))

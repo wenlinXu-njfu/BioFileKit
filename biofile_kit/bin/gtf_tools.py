@@ -7,7 +7,7 @@ Author: xuwenlin
 E-mail: wenlinxu.njfu@outlook.com
 """
 import click
-from biofile_kit.gtf_utils import gtf2bed, gtf_extract_seq, gtf_sort, __version__
+from biofile_kit.gtf_utils import gtf2bed, gtf2gff, gtf_extract_seq, gtf_sort, __version__
 from pybioinformatic import Displayer
 
 displayer = Displayer(__file__.split('/')[-1], version=__version__)
@@ -24,6 +24,7 @@ def gtf_tools():
 gtf_tools.add_command(gtf_sort, 'sort')
 gtf_tools.add_command(gtf_extract_seq, 'extract_seq')
 gtf_tools.add_command(gtf2bed, 'to_bed')
+gtf_tools.add_command(gtf2gff, 'gtf2gff')
 
 
 if __name__ == '__main__':
